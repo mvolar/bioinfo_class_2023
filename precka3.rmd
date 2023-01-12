@@ -1,16 +1,23 @@
 ---
 title: "Terminal basics"
 author: "Marin Volaric"
-date: "2023-01-11"
-output:  
-    ioslides_presentation
+institute: "Rruđer Bošković Institute"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
 
-## Linux terminal
+#Linux terminal
 
 What even is a "terminal" or "console"?
 
 ![](terminal.png)
+
+---
 
 ## Why would you use it?
 
@@ -18,6 +25,8 @@ What even is a "terminal" or "console"?
 -   once learned it is 1000x more efficient than using explorer
 -   best and newest programs don't have a GUI
 -   one you get a hang of it you can do crazy things
+---
+
 
 ## What will you do...
 
@@ -27,12 +36,14 @@ What even is a "terminal" or "console"?
 2.  basics of basics of bash scripting
 3.  basic bioinformatic terminal tools
 4.  genome assembly programs
+---
 
 # But first...
+---
 
 ## Navigation
 
-File path notation
+###File path notation
 
 ```{bash, echo = TRUE,  eval=FALSE}
 path/ # ====> search in this foldewr 
@@ -42,7 +53,7 @@ path/ # ====> search in this foldewr
 
 ```
 
-Going into directories
+###Going into directories
 
 ```{bash, echo = TRUE,  eval=FALSE}
 #to enter a folder
@@ -53,6 +64,7 @@ cd ..
 #searching in the parent folder
 ```
 
+---
 ## Create or remove a directory
 
 ```{bash, echo = TRUE,  eval=FALSE}
@@ -64,6 +76,7 @@ rm -r dirname
 rm file
 ```
 
+---
 ## Basic commands
 
 ```{bash, echo = TRUE,  eval=FALSE}
@@ -82,6 +95,8 @@ touch file.txt
 cat file.txt 
 ```
 
+---
+
 ## Git/GitHub
 
 version control and collaboration, any serious multi-person programming project uses GitHub and you will be pulling most of your tools from either GitHub or GitLab
@@ -91,6 +106,8 @@ version control and collaboration, any serious multi-person programming project 
 git clone https://github.com/mvolar/bioinfo_class_2023.git
 
 ```
+
+---
 
 ## Distribution
 
@@ -106,6 +123,8 @@ Source code distribution types:
 
 If you stay in Bioinformatics you will get to know Conda very closely
 
+---
+
 ## Exercise 1
 
 Git clone the lesson repository:
@@ -116,12 +135,13 @@ git clone https://github.com/mvolar/bioinfo_class_2023.git
 
 ```
 
+
 ```{r,echo=FALSE}
 library(countdown)
 countdown(minutes = 0, seconds = 30)
 ```
 
-
+---
 ## Exercise 2
 
 Go into the folder and create a new directory inside. Touch a "test.txt" file inside to see if everything works.
@@ -305,7 +325,8 @@ seqtk seq -a in.fq > out.fa #convert fastq to fasta
 
 seqtk subseq in.fq name.lst > out.fq #use a name list to filter out reads
 
-seqtk subseq in.fa reg.bed > out.fa #extract only regions specified in the bed file
+seqtk subseq in.fa reg.bed > out.fa #extract only regions specified 
+#in the bed file
 
 seqtk sample -s100 read1.fq 10000 > sub1.fq #sample reads
 
@@ -324,5 +345,4 @@ Create a fasta name list from "combined_reads.fasta" using grep. Visually inspec
 library(countdown)
 countdown(minutes = 15, seconds = 00)
 ```
-
 

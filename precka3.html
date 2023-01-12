@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Terminal basics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Marin Volaric" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/countdown-0.4.0/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown-0.4.0/countdown.js"></script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Terminal basics
+]
+.author[
+### Marin Volaric
+]
+.institute[
+### Rruđer Bošković Institute
+]
+
+---
+
+
+#Linux terminal
+
+What even is a "terminal" or "console"?
+
+![](terminal.png)
+
+---
+
+## Why would you use it?
+
+-   speed
+-   once learned it is 1000x more efficient than using explorer
+-   best and newest programs don't have a GUI
+-   one you get a hang of it you can do crazy things
+---
+
+
+## What will you do...
+
+### ... in the scope of this exercise
+
+1.  basic terminal commands
+2.  basics of basics of bash scripting
+3.  basic bioinformatic terminal tools
+4.  genome assembly programs
+---
+
+# But first...
+---
+
+## Navigation
+
+###File path notation
+
+
+```bash
+path/ # ====&gt; search in this foldewr 
+./file.txt # ===&gt; current directory prefix (./)
+~/... # ===&gt; from user Home (where we have desktop,downloads,etc)
+/... # ===&gt; most dangerous, goes from home root
+
+```
+
+###Going into directories
+
+
+```bash
+#to enter a folder
+cd dirname
+#to go to the parent folder 
+cd ..
+#note that ../ syntax can be used to point to programs that you are
+#searching in the parent folder
+```
+
+---
+## Create or remove a directory
+
+
+```bash
+#to create a directory
+mkdir dirname
+#remove any directory
+rm -r dirname
+#also remove a file
+rm file
+```
+
+---
+## Basic commands
+
+
+```bash
+
+#display top 10 lines of a file
+head
+#bottom 10 lines of a file
+tail
+#copy one file to another
+cp path/to/file1.txt path/to/copy.txt 
+#move from file to file, also rename
+mv path/to/file1.txt path/to/move.txt 
+#touch a file
+touch file.txt
+#print file
+cat file.txt 
+```
+
+---
+
+## Git/GitHub
+
+version control and collaboration, any serious multi-person programming project uses GitHub and you will be pulling most of your tools from either GitHub or GitLab
+
+
+```bash
+
+git clone https://github.com/mvolar/bioinfo_class_2023.git
+
+```
+
+---
+
+## Distribution
+
+Source code distribution types:
+
+-   User side compilation: most C/C++/Rust programs
+
+-   Compiled binaries: selected programs (usually avoided)
+
+-   Scripts: python and R scripts
+
+### Conda
+
+If you stay in Bioinformatics you will get to know Conda very closely
+
+---
+
+## Exercise 1
+
+Git clone the lesson repository:
+
+
+```bash
+
+git clone https://github.com/mvolar/bioinfo_class_2023.git
+
+```
+
+
+<div class="countdown" id="timer_88853510" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
+</div>
+
+---
+## Exercise 2
+
+Go into the folder and create a new directory inside. Touch a "test.txt" file inside to see if everything works.
+
+Next try to copy "mtcars.tsv" inside your directory. (hint use ../ notation). Show yourself the first 10 lines of the file.
+
+
+<div class="countdown" id="timer_36baed50" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+# Babys first command line programs
+
+## grep
+
+In this example we will learn the basics of any command line program. Grep is a good example since it is very simple and very very useful. Basic parts of a CLI command call include:
+
+
+```bash
+grep # program invocation
+    -h -i -F -R... #flags for the program
+     search_regex # what we will be looking ofr
+     file/or file
+
+#output is printed by default on the screen
+#most programs have -h flag which gives insight into the usage of the command
+```
+
+## Exercise 3
+
+Print all the lines which have "Merc" string in the "mtcars.tsv" file.
+
+Using "-h" flag for the grep command find the appropriate flag for counting the number of occurances and count all the occurances of word.
+
+
+<div class="countdown" id="timer_23a5ed1a" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+## Piping and redirecting
+
+"|" is the pipe operator
+
+"&gt;" is the redirection operator
+
+"&gt;&gt;" is the append operator
+
+
+```bash
+
+cat "hello world" &gt; test1.txt
+
+```
+
+## Exercise 4
+
+Put all Mazda car lines in a seperate file named "mazda_mtcars.tsv"
+
+How many lines does it have?
+
+<div class="countdown" id="timer_be1a0505" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+# Bash scripting
+
+### When you don't want to do the same thing 100 times...
+
+##
+Lets say you have 20 samples, all in separate folders, but you are only interested in doing something with one file
+
+Would you run the same thing 20 times? Or would you look for an alternate way?
+
+## Bash scripting
+
+Bash scripts are small files with .sh extension which have a main purpose of controlling and running multiple commands in a sequential pattern
+
+For most biological purposes you need to only know basic looping (if and for looping) and command names with variable user input and/or flags.
+
+
+## 
+If loops
+
+
+```bash
+
+#!/bin/bash
+a=17
+if [a%2==0]
+then
+  echo "a is even" 
+else
+  echo "a is odd"
+fi
+done
+
+```
+
+
+## 
+If loops are similar to most program languages
+
+
+```bash
+
+#!/bin/bash
+a=17
+if [a%2==0]
+then
+  echo "a is even" 
+else
+  echo "a is odd"
+fi
+done
+
+```
+
+##
+For loops 
+
+
+```bash
+
+#!/bin/bash
+echo "Hello world"
+for i in {0..10} #from 0 to 10
+do
+  echo "Welcome $i times" # the dollar operator allows calling variables
+done
+
+```
+
+
+
+
+## Exercise 5
+
+Create a bash script which takes user input and creates that many files empty files in a new directory.
+
+
+<div class="countdown" id="timer_97073173" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+##
+
+```bash
+#!/bin/bash
+echo "give me a number"
+read var
+for i in {0..$var} #from 0 to 10
+do
+  echo "created $i"
+  touch $var.txt # the dollar operator allows calling variables
+done
+
+```
+
+
+# Genomics tools
+
+## Processing reads
+
+The best tool is seqtk:
+
+
+```bash
+
+git clone https://github.com/lh3/seqtk.git;
+cd seqtk; make
+
+```
+
+## A plethora of abilities
+
+
+
+```bash
+
+seqtk seq -a in.fq &gt; out.fa #convert fastq to fasta
+
+seqtk subseq in.fq name.lst &gt; out.fq #use a name list to filter out reads
+
+seqtk subseq in.fa reg.bed &gt; out.fa #extract only regions specified 
+#in the bed file
+
+seqtk sample -s100 read1.fq 10000 &gt; sub1.fq #sample reads
+
+```
+
+## But I can do that using python/R/Galaxy/Excel/manually!
+
+Yes you can. But sometimes you are on a server with limited computing resources and your data is simply to large to be going back and forth. 
+
+
+## Exercise 6
+
+Create a fasta name list from "combined_reads.fasta" using grep. Visually inspect the fasta name list. Using a bash script separate all reads based on group in their names. Filter only reads which are &gt;100bp in length (use the -h flag to get help on the length filtering).  Use both grep and seqtk to achieve this.
+
+<div class="countdown" id="timer_d05d0090" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
