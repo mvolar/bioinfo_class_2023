@@ -1,9 +1,10 @@
 ---
-title: "Terminal basics"
+title: "Applied genomics"
 author: "Marin Volaric"
-institute: "Rruđer Bošković Institute"
+institute: "Ruđer Bošković Institute"
 output:
   xaringan::moon_reader:
+    css: xaringan-themer.css
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -11,7 +12,132 @@ output:
       countIncrementalSlides: false
 ---
 
-#Linux terminal
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+
+library(xaringanthemer)
+style_solarized_light()
+```
+
+
+## What is genomics?
+
+
+######"Genomics is an interdisciplinary field of biology focusing on the structure, function, evolution, mapping, and editing of genomes. A genome is an organism's complete set of DNA, including all of its genes as well as its hierarchical, three-dimensional structural configuration."
+
+### Difference between genomics and genetics?
+---
+
+
+## Why is it so complex?
+
+
+####Maths + Computer Science + Chemistry + Biology
+
+####You need to know both low level coding and how many chromosomes an onion has in order to be successful.
+
+
+---
+
+## The basic steps of any genomics experiments?
+
+---
+## Isolation of DNA 
+
+![foo](isodna.png)
+
+---
+
+## Sequencing
+
+![foo](nanopore.png)
+---
+###Main sequencing platforms of today
+
+So called third generation sequencing platforms:
+
+####ONT vs. PacBio
+
+Read length vs. quality
+
+---
+## Assembly
+
+![foo](assembly.png)
+---
+
+## Two types of assemblers:
+
+-   DGB assemblers
+-   OLC assemblers
+
+Both handle unresolvable repeats by essentially leaving them out
+Fragments are contigs (short for contiguous)
+
+-   Mixed approach assemblers (verkko)
+
+Try to brute force by read length and quality.
+
+---
+## But what is the problem?
+
+Tandem repeats and satellites 
+-   short, highly repeatable elements stretching up to 1mb in size
+
+---
+
+## How does the problem look?
+
+Let's say you have a sentence:
+
+######"The quick brown fox jumps over the lazy lazy lazy lazy dog"
+
+but you only get at max 5-letter sized word snippets to "assemble" the sentence back from word snippets.
+
+
+```{r,echo=FALSE}
+library(countdown)
+countdown(minutes = 1, seconds = 30)
+```
+
+
+---
+
+## Maybe solvable right?
+
+But let's include multiple chromosomes which have the same repeat:
+
+###### "The quick brown fox jumps over the lazy lazy lazy lazy dog"
+
+###### "The lazy lazy lazy red lion flies under the lazy cat"
+
+but you only get at max 5-letter sized word snippets to "assemble" the sentence back from word snippets.
+
+```{r,echo=FALSE}
+
+countdown(minutes = 0, seconds = 30)
+```
+
+
+
+---
+
+But some very smart people have managed to really make breaking progress into solving the problems.
+
+They also give free research software for people to use.
+
+However most software does not come on your phone or even with a GUI
+
+---
+
+That's why if you want to do real bioinformatics you need the (almost) magical tool:
+
+
+---
+
+# Linux terminal
+
+---
 
 What even is a "terminal" or "console"?
 
@@ -137,7 +263,7 @@ git clone https://github.com/mvolar/bioinfo_class_2023.git
 
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 0, seconds = 30)
 ```
 
@@ -150,12 +276,14 @@ Next try to copy "mtcars.tsv" inside your directory. (hint use ../ notation). Sh
 
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 3, seconds = 00)
 ```
 
+---
 # Babys first command line programs
 
+---
 ## grep
 
 In this example we will learn the basics of any command line program. Grep is a good example since it is very simple and very very useful. Basic parts of a CLI command call include:
@@ -170,18 +298,21 @@ grep # program invocation
 #most programs have -h flag which gives insight into the usage of the command
 ```
 
+---
+
 ## Exercise 3
 
 Print all the lines which have "Merc" string in the "mtcars.tsv" file.
 
-Using "-h" flag for the grep command find the appropriate flag for counting the number of occurances and count all the occurances of word.
+Using "-h" flag for the grep command find the appropriate flag for counting the number of occurrences and count all the occurrences of word.
 
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 3, seconds = 00)
 ```
 
+---
 
 ## Piping and redirecting
 
@@ -196,7 +327,7 @@ countdown(minutes = 3, seconds = 00)
 cat "hello world" > test1.txt
 
 ```
-
+---
 ## Exercise 4
 
 Put all Mazda car lines in a seperate file named "mazda_mtcars.tsv"
@@ -204,47 +335,31 @@ Put all Mazda car lines in a seperate file named "mazda_mtcars.tsv"
 How many lines does it have?
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 3, seconds = 00)
 ```
 
-
+---
 # Bash scripting
 
 ### When you don't want to do the same thing 100 times...
+---
 
-##
 Lets say you have 20 samples, all in separate folders, but you are only interested in doing something with one file
 
 Would you run the same thing 20 times? Or would you look for an alternate way?
 
-## Bash scripting
+---
+## What are bash scripts
 
 Bash scripts are small files with .sh extension which have a main purpose of controlling and running multiple commands in a sequential pattern
 
 For most biological purposes you need to only know basic looping (if and for looping) and command names with variable user input and/or flags.
 
-
-## 
-If loops
-
-```{bash, echo = TRUE,  eval=FALSE}
-
-#!/bin/bash
-a=17
-if [a%2==0]
-then
-  echo "a is even" 
-else
-  echo "a is odd"
-fi
-done
-
-```
+---
 
 
-## 
-If loops are similar to most program languages
+# If loops
 
 ```{bash, echo = TRUE,  eval=FALSE}
 
@@ -260,8 +375,11 @@ done
 
 ```
 
-##
-For loops 
+---
+
+
+
+# For loops 
 
 ```{bash, echo = TRUE,  eval=FALSE}
 
@@ -275,7 +393,7 @@ done
 ```
 
 
-
+---
 
 ## Exercise 5
 
@@ -283,11 +401,11 @@ Create a bash script which takes user input and creates that many files empty fi
 
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 3, seconds = 00)
 ```
 
-
+---
 ##
 ```{bash, echo = TRUE,  eval=FALSE}
 #!/bin/bash
@@ -302,12 +420,13 @@ done
 
 ```
 
-
+---
 # Genomics tools
 
+---
 ## Processing reads
 
-The best tool is seqtk:
+The best (currently available) tool is seqtk:
 
 ```{bash, echo = TRUE,  eval=FALSE}
 
@@ -315,6 +434,8 @@ git clone https://github.com/lh3/seqtk.git;
 cd seqtk; make
 
 ```
+
+---
 
 ## A plethora of abilities
 
@@ -332,17 +453,19 @@ seqtk sample -s100 read1.fq 10000 > sub1.fq #sample reads
 
 ```
 
+---
 ## But I can do that using python/R/Galaxy/Excel/manually!
 
 Yes you can. But sometimes you are on a server with limited computing resources and your data is simply to large to be going back and forth. 
 
-
+---
 ## Exercise 6
 
 Create a fasta name list from "combined_reads.fasta" using grep. Visually inspect the fasta name list. Using a bash script separate all reads based on group in their names. Filter only reads which are >100bp in length (use the -h flag to get help on the length filtering).  Use both grep and seqtk to achieve this.
 
 ```{r,echo=FALSE}
-library(countdown)
+
 countdown(minutes = 15, seconds = 00)
 ```
 
+---
