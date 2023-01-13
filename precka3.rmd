@@ -281,7 +281,9 @@ countdown(minutes = 3, seconds = 00)
 ```
 
 ---
-# Babys first command line programs
+# Your first command line programs
+
+
 
 ---
 ## grep
@@ -397,7 +399,7 @@ done
 
 ## Exercise 5
 
-Create a bash script which takes user input and creates that many files empty files in a new directory.
+Create a bash script which takes user input and creates that many files empty files in a new directory. (hint use "read" function to get and store the read variable in your program)
 
 
 ```{r,echo=FALSE}
