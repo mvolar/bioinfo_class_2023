@@ -105,7 +105,7 @@ Let's say you have a sentence:
 but you only get at max 5-letter sized word snippets to "assemble" the sentence back from word snippets.
 
 
-<div class="countdown" id="timer_107b7627" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_dce03fdb" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -123,7 +123,7 @@ But let's include multiple chromosomes which have the same repeat:
 
 but you only get at max 5-letter sized word snippets to "assemble" the sentence back from word snippets.
 
-<div class="countdown" id="timer_1bc17dbe" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_72b7d6df" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -278,7 +278,7 @@ git clone https://github.com/mvolar/bioinfo_class_2023.git
 ```
 
 
-<div class="countdown" id="timer_44382179" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_bec0e293" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
@@ -291,13 +291,15 @@ Go into the folder and create a new directory inside. Touch a "test.txt" file in
 Next try to copy "mtcars.tsv" inside your directory. (hint use ../ notation). Show yourself the first 10 lines of the file.
 
 
-<div class="countdown" id="timer_d1830162" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_f9181508" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
-# Babys first command line programs
+# Your first command line programs
+
+
 
 ---
 ## grep
@@ -324,7 +326,7 @@ Print all the lines which have "Merc" string in the "mtcars.tsv" file.
 Using "-h" flag for the grep command find the appropriate flag for counting the number of occurrences and count all the occurrences of word.
 
 
-<div class="countdown" id="timer_b0a6767e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_9b5344b8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -352,7 +354,7 @@ Put all Mazda car lines in a seperate file named "mazda_mtcars.tsv"
 
 How many lines does it have?
 
-<div class="countdown" id="timer_4b8d1167" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_39933758" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
@@ -417,16 +419,16 @@ done
 
 ## Exercise 5
 
-Create a bash script which takes user input and creates that many files empty files in a new directory.
+Create a bash script which asks user input and creates that many files empty files in a new directory. (hint use "read" function to get and store the read variable in your program)
 
 
-<div class="countdown" id="timer_b1793f5d" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_64ff6aa3" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
-##
+
 
 ```bash
 #!/bin/bash
@@ -441,7 +443,45 @@ done
 ```
 
 ---
-# Genomics tools
+# Command line options
+---
+
+Almost all programming langauges have command line option available for writing and deploying code (so does R, python and BASH).
+
+It is the most frequent way of reproducibly asking user input and running a script, BOTH FOR DEVELOPERS AND USERS.
+
+Create a new file called test.sh and put this in
+
+```bash
+#!/bin/bash
+echo "Argument 0 is"
+echo $0
+echo "Argument 1 is"
+echo $1
+```
+
+now run the script using
+
+
+```bash
+bash test.sh "hello"
+```
+
+---
+## Exercise 6
+
+Create a bash script which takes in an option either "add" or "subtract" and 2 numbers. It reports prints either the sum or the difference between the 2 numbers based on user input.
+
+
+<div class="countdown" id="timer_f861eedc" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+---
+#Genomics tools
 
 ---
 ## Processing reads
@@ -481,16 +521,105 @@ seqtk sample -s100 read1.fq 10000 &gt; sub1.fq #sample reads
 Yes you can. But sometimes you are on a server with limited computing resources and your data is simply to large to be going back and forth. 
 
 ---
-## Exercise 6
+## Exercise 7
 
-Create a fasta name list from "combined_reads.fasta" using grep. Visually inspect the fasta name list. Using a bash script separate all reads based on group in their names. Filter only reads which are &gt;100bp in length (use the -h flag to get help on the length filtering).  Use both grep and seqtk to achieve this.
+Convert reads.fastq to fasta reads and sample only 30 reads from the file. Use piping to place them all in a single file called reads.fasta
 
-<div class="countdown" id="timer_94422cc8" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown" id="timer_8a10d636" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## Exercise 8
+
+Create a fasta name list from "test_reads.fasta" using grep. Visually inspect the fasta name list. Filter only reads which have a number &gt; 999 in their names (you can use regex expressions in grep also). Afterwards filter only those with a length &gt; 1000bp. Use both grep and seqtk to achieve this.
+
+<div class="countdown" id="timer_02c5f095" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
 <div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
+
+#Genome mapping
+
+
+Usually each read type has it's own settings in mappers or event different mappers. 
+
+Two main mappers:
+    -   Minimap2 -long  
+    -   Bowtie2 - short
+
+
+---
+# Output types
+
+## PAF
+
+## BAM
+
+## SAM
+
+---
+
+##Exercise 9
+
+Download minimap2 from the official github repo. Map query.fasta onto target.fasta. Using help create all three separate output formats. Visually inspect them using either cat or gedit. 
+
+
+```r
+countdown(minutes = 7, seconds = 00)
+```
+
+<div class="countdown" id="timer_6126316e" data-update-every="1" tabindex="0" style="right:0;bottom:0;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+
+---
+
+#Genome assembly
+
+---
+
+## Same basic principles:
+
+- Longest possible
+- Try to "bridge the gap"
+- Least amount of errors
+- Splitting haplotypes
+- Hybrid assembly approaches
+
+
+---
+
+## List of currently best assemblers:
+
+- Canu (verkko)
+- Hifiasm
+- Flye
+- SPAdes
+
+
+
+---
+
+All are command line tools, although some are available on galaxy, however performance for full genome assembly of even small metagenomes is really underwhelming. 
+
+All have extensive available documentation available which you can get by simple google-ing of the names.
+
+---
+
+#Homework:
+
+####Task1. From the file total.fastq, separate the reads on 2 different groups that you get from visually inspecting them. Use Canu to assemble one group and use hifiasm to assemble the other group.
+
+####Task2. Create a simple bash script using command line options which asks the user for input reads and one assembler. This is for passing. For any additional points consider adding read prefiltering based on leghts, name list, read sampling options, your own help dialog which gets activated on "-h" flag. 
+
+This is basically designing your own command line tool. Adding "flags" instead of positional arguments is also appreciated (use getopts for bash).
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

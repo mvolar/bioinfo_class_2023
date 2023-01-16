@@ -399,7 +399,7 @@ done
 
 ## Exercise 5
 
-Create a bash script which takes user input and creates that many files empty files in a new directory. (hint use "read" function to get and store the read variable in your program)
+Create a bash script which asks user input and creates that many files empty files in a new directory. (hint use "read" function to get and store the read variable in your program)
 
 
 ```{r,echo=FALSE}
@@ -408,7 +408,7 @@ countdown(minutes = 3, seconds = 00)
 ```
 
 ---
-##
+
 ```{bash, echo = TRUE,  eval=FALSE}
 #!/bin/bash
 echo "give me a number"
@@ -423,7 +423,43 @@ done
 ```
 
 ---
-# Genomics tools
+# Command line options
+---
+
+Almost all programming langauges have command line option available for writing and deploying code (so does R, python and BASH).
+
+It is the most frequent way of reproducibly asking user input and running a script, BOTH FOR DEVELOPERS AND USERS.
+
+Create a new file called test.sh and put this in
+```{bash, echo = TRUE,  eval=FALSE}
+#!/bin/bash
+echo "Argument 0 is"
+echo $0
+echo "Argument 1 is"
+echo $1
+```
+
+now run the script using
+
+```{bash, echo = TRUE,  eval=FALSE}
+bash test.sh "hello"
+```
+
+---
+## Exercise 6
+
+Create a bash script which takes in an option either "add" or "subtract" and 2 numbers. It reports prints either the sum or the difference between the 2 numbers based on user input.
+
+
+```{r,echo=FALSE}
+
+countdown(minutes = 6, seconds = 00)
+```
+
+---
+
+---
+#Genomics tools
 
 ---
 ## Processing reads
@@ -461,9 +497,19 @@ seqtk sample -s100 read1.fq 10000 > sub1.fq #sample reads
 Yes you can. But sometimes you are on a server with limited computing resources and your data is simply to large to be going back and forth. 
 
 ---
-## Exercise 6
+## Exercise 7
 
-Create a fasta name list from "combined_reads.fasta" using grep. Visually inspect the fasta name list. Using a bash script separate all reads based on group in their names. Filter only reads which are >100bp in length (use the -h flag to get help on the length filtering).  Use both grep and seqtk to achieve this.
+Convert reads.fastq to fasta reads and sample only 30 reads from the file. Use piping to place them all in a single file called reads.fasta
+
+```{r,echo=FALSE}
+
+countdown(minutes = 5, seconds = 00)
+```
+
+---
+## Exercise 8
+
+Create a fasta name list from "test_reads.fasta" using grep. Visually inspect the fasta name list. Filter only reads which have a number > 999 in their names (you can use regex expressions in grep also). Afterwards filter only those with a length > 1000bp. Use both grep and seqtk to achieve this.
 
 ```{r,echo=FALSE}
 
@@ -471,3 +517,76 @@ countdown(minutes = 15, seconds = 00)
 ```
 
 ---
+
+#Genome mapping
+
+
+Usually each read type has it's own settings in mappers or event different mappers. 
+
+Two main mappers:
+    -   Minimap2 -long  
+    -   Bowtie2 - short
+
+
+---
+# Output types
+
+## PAF
+
+## BAM
+
+## SAM
+
+---
+
+##Exercise 9
+
+Download minimap2 from the official github repo. Map query.fasta onto target.fasta. Using help create all three separate output formats. Visually inspect them using either cat or gedit. 
+
+```{r}
+countdown(minutes = 7, seconds = 00)
+```
+
+
+---
+
+#Genome assembly
+
+---
+
+## Same basic principles:
+
+- Longest possible
+- Try to "bridge the gap"
+- Least amount of errors
+- Splitting haplotypes
+- Hybrid assembly approaches
+
+
+---
+
+## List of currently best assemblers:
+
+- Canu (verkko)
+- Hifiasm
+- Flye
+- SPAdes
+
+
+
+---
+
+All are command line tools, although some are available on galaxy, however performance for full genome assembly of even small metagenomes is really underwhelming. 
+
+All have extensive available documentation available which you can get by simple google-ing of the names.
+
+---
+
+#Homework:
+
+####Task1. From the file total.fastq, separate the reads on 2 different groups that you get from visually inspecting them. Use Canu to assemble one group and use hifiasm to assemble the other group.
+
+####Task2. Create a simple bash script using command line options which asks the user for input reads and one assembler. This is for passing. For any additional points consider adding read prefiltering based on leghts, name list, read sampling options, your own help dialog which gets activated on "-h" flag. 
+
+This is basically designing your own command line tool. Adding "flags" instead of positional arguments is also appreciated (use getopts for bash).
+
