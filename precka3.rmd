@@ -426,9 +426,9 @@ done
 # Command line options
 ---
 
-Almost all programming langauges have command line option available for writing and deploying code (so does R, python and BASH).
+Almost all programming languages have command line option available for writing and deploying code (so does R, python and BASH).
 
-It is the most frequent way of reproducibly asking user input and running a script, BOTH FOR DEVELOPERS AND USERS.
+It is the most frequent reproducible way of  asking user input and running a script, BOTH FOR DEVELOPERS AND USERS.
 
 Create a new file called test.sh and put this in
 ```{bash, echo = TRUE,  eval=FALSE}
